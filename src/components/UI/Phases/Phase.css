@@ -1,0 +1,76 @@
+/* Phase */
+
+.phase-item {
+    flex: 1;
+    background-color: #F5F5F5;
+    transition: .3s;
+}
+  
+.phase-item:hover {
+    background-color: #F5F5F5EE;
+    -webkit-box-shadow: 0px 12px 12px 2px rgba(97,97,97,0.63);
+    -moz-box-shadow: 0px 12px 12px 2px rgba(97,97,97,0.63);
+    box-shadow: 0px 12px 12px 2px rgba(97,97,97,0.63);
+    transform: translateY(-10px);
+    transition: .3s;
+}
+
+.phase-container {
+    display: flex;
+    flex: 1;
+    height: 46px;
+    align-items: center;
+}
+  
+.phase-content {
+    flex: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+  
+.phase-header {
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+  
+.phase-title {
+    margin: 0px;
+    padding: 0px;
+}
+  
+.phase-line {
+    height: 4px;
+    background-color: grey;
+    flex: 1;
+}
+
+.phase-bottom-line {
+    height: 4px;
+    background-color: grey;
+    flex: 1;
+}
+
+.phase-sip-md {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .phase-not-md {
+        display: none;
+    }
+
+    .phase-container {
+        display: flex;
+        flex: 1;
+        height: 46px;
+        align-items: stretch;
+        flex-direction: column;
+    }
+    
+    .phase-sip-md {
+        display: inherit;
+    }
+}
