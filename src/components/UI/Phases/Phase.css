@@ -18,7 +18,6 @@
 .phase-container {
     display: flex;
     flex: 1;
-    height: 46px;
     align-items: center;
 }
   
@@ -65,7 +64,6 @@
     .phase-container {
         display: flex;
         flex: 1;
-        height: 46px;
         align-items: stretch;
         flex-direction: column;
     }

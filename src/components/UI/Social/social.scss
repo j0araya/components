@@ -1,0 +1,103 @@
+@import "../../../styles/variables.scss";
+
+$size: 40px;
+$container: 500px;
+
+.social-container {
+  height: $container;
+  // background-color: grey;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+}
+
+.social-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  position: absolute;
+}
+
+$colours: (lime, blue, yellow, red);
+
+$length-colours: length($colours);
+$current: 1;
+$fib: 0;
+@for $i from 1 through $length-colours {
+  .social-dot-#{$i} {
+    $fib: $current + $fib;
+    $current: $fib;
+    background-color: rgba($i, $i + 100, $i, 0.3);
+    height: $size * $i;
+    width: $size * $i;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1) rotate(45deg);
+    // border-radius: 50%;
+    // transition: 0.3s;
+    animation: movelogo ($fib + 0s) linear infinite;
+    // transform: rotate(0deg);
+    &:hover {
+      background-color: rgba(nth($colours, $i), 1);
+      cursor: pointer;
+      -webkit-box-shadow: 0px 12px 12px 2px rgba(97, 97, 97, 0.63);
+      -moz-box-shadow: 0px 12px 12px 2px rgba(97, 97, 97, 0.63);
+      box-shadow: 0px 12px 12px 2px rgba(97, 97, 97, 0.63);
+      // transform: scale(1.4 - (0.1 * $i));
+      transition: 0.3s ease-in;
+    }
+  }
+}
+
+@keyframes movelogo {
+  0% {
+    border-radius: 20%;
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  50% {
+    border-radius: 50%;
+    background-color: rgba(0, 180, 0, 0.5);
+    transform: rotate3d(1,0,0,180deg) rotateY(-180deg);
+  }
+  70% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    border-radius: 20%;
+    // opacity: 0.8;
+  }
+}
+
+
+// .social-button {
+//   &-primary {
+//     background-color: map-get($theme-colors, "primary");
+//     height: $size * 2;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     padding: 4px;
+//   }
+//   &-secondary {
+//     background-color: map-get($theme-colors, "secondary");
+//     height: $size * 1;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     padding: 4px;
+//   }
+// }
+
+.social-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}

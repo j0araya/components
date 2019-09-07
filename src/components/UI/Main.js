@@ -1,10 +1,12 @@
 import React from 'react';
-import logo from '../../logo.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Dot, Line } from '../stepper/Stepper';
-import { Phase, Phases, Next } from '../UI/Phases/Phase';
+import Phases from '../UI/Phases/Phases';
+import Social from '../UI/Social/Social';
+import User from '../../store/User';
+import Info from '../../store/Info';
 
-
+// const user = new User();
+// console.log('uer', Info.info);
 const style = {
   main1: {
     display: 'flex',
@@ -25,8 +27,6 @@ const style = {
   }
 }
 
-
-
 const Main = () => (
   <section className="landing">
     <div style={style.main1}>
@@ -38,32 +38,8 @@ const Main = () => (
       <Line />
       <Dot color="#808080" />
     </div>
-    <Phases>
-      <Phase
-        title="En revisión"
-        color="#FF0000"
-        state="Aprobado"
-      />
-      <Next color="#FF0000" />
-      <Phase
-        title="Partes"
-        color="#0000FF"
-        state="Aprobado"
-      />
-      <Next color="#0000FF"/>
-      <Phase
-        title="Planificación"
-        color="#228B22"
-        state="Pendiente"
-      />
-      <Next color="#228B22" />
-      <Phase
-        title="Ejecución"
-        color="#000000"
-        state={''}
-        disabled={false}
-      />
-    </Phases>
+    <Phases info={Info.info} />
+    <Social />
 
     {/* </div> */}
   </section>

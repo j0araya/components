@@ -1,4 +1,5 @@
 {
+  "homepage": "http://j0araya.github.io/components",
   "name": "cv",
   "version": "0.1.0",
   "private": true,
@@ -6,6 +7,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "moment": "^2.24.0",
+    "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
@@ -14,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^2.0.1"
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "gh-pages": "^2.1.1"
   }
 }

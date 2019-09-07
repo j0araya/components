@@ -20,22 +20,16 @@ const style = {
 
 const disabledColor = '#808080';
 
-const Footer = ({ username, adate }) => {
-  const time = new Date().toLocaleTimeString('es-cl').split(':');
-  const dateTime = new Date().toLocaleDateString('es-cl').split('-2019')[0].split('-').join('/');
-  return (
-    <div style={{ justifyContent: 'space-between', alignItems: 'flex-end', flex: 1, marginTop: 8, display: 'flex' }}>
-      <div style={{ color: '#808080', fontSize: 12 }}>
-        {username}
-      </div>
-      <div style={{ color: '#808080', fontSize: 12, display: 'flex', alignItems: 'center' }}>
-        {dateTime}
-        <i class="fas fa-circle" style={{ fontSize: 4, margin: 4, marginTop: 6 }} />
-        {`${time[0]}:${time[1]}`}
-      </div>
+const PhaseFooter = ({ left, right }) => (
+  <div style={{ justifyContent: 'space-between', alignItems: 'flex-end', flex: 1, marginTop: 8, display: 'flex' }}>
+    <div style={{ color: '#808080', fontSize: 12 }}>
+      {left}
     </div>
-  )
-};
+    <div style={{ color: '#808080', fontSize: 12, display: 'flex', alignItems: 'center' }}>
+      {right}
+    </div>
+  </div>
+);
 
 const Next = ({ color, disabled }) => (
   <div
@@ -51,48 +45,83 @@ const Next = ({ color, disabled }) => (
     <i className="fas fa-angle-right fa-2x phase-not-md" />
   </div>
 )
-
-const Phase = ({ title, color = '#808080', state, disabled }) => {
+const PhaseHeader = ({ title, subtitle, disabled, color }) => {
   const styleTitle = { ...style.title, color: disabled ? disabledColor : `${color}F0` };
-  const styleLine = { ...style.line, backgroundColor: disabled ? disabledColor : `${color}F0` };
-  const styleBottomLine = { ...style.bottomLine, backgroundColor: disabled ? disabledColor : `${color}F0` }
   return (
-    <div className="phase-item">
+    <div className="phase-header">
+      <h4 style={styleTitle}>
+        {title}
+      </h4>
+      <div style={{ color: 'gray', fontSize: 12, display: 'flex' }}>
+        <div style={{ display: 'flex' }}>
+          {subtitle}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const Phase = ({ color = '#808080', onClick, children, disabled }) => {
+  // const styleLine = { ...style.line, backgroundColor: disabled ? disabledColor : `${color}F0` };
+  const styleBottomLine = { ...style.bottomLine, backgroundColor: disabled ? disabledColor : `${color}80` }
+  return (
+    <div className="phase-item" onClick={onClick}>
       <div className="phase-content">
-        <div className="phase-header">
-          <h4 style={styleTitle}>
-            {title}
-          </h4>
-          <div style={{ color: 'gray', fontSize: 12, display: 'flex' }}>
-            <div style={{ display: 'flex' }}>
-              {state}
-            </div>
-          </div>
-        </div>
+        {children}
         {/* <div style={styleLine} className="phase-not-md" /> */}
-        <div style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-between', paddingTop: 4 }} className="phase-not-md">
-          <div style={{ flexDirection: 'column' }}>
-            <div style={{ color: '#000000', fontSize: 12 }}>
-              Comentario
-            </div>
-            <div style={{ color: '#808080', fontSize: 12 }}>
-              Listo
-            </div>
-          </div>
-          {/* <div className="phase-sip-md">
-            <div style={{ color: '#808080', fontSize: 12 }}>
-              {state}
-            </div>
-          </div> */}
-        </div>
-        <Footer username={`@${'JhonDoe'}`} />
+        {/* <Footer username={`@${'JhonDoe'}`} /> */}
       </div>
       <div style={styleBottomLine} />
     </div>
   )
 }
 
-const Phases = ({ children }) => (
+const PhaseExperience = ({ info }) => (
+  <div style={{ height: 200, backgroundColor: info.color, color: 'white', padding: 12 }}>
+    <h2>{info.title}</h2>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      {info.data.reverse().map(d => (
+        <div key={d.subtitle} style={{ display: 'flex', flex: 1, flexDirection: 'column', padding: 2, margin: 2 }}>
+          <h4>{d.title}</h4>
+          <div>{d.subtitle}</div>
+          <small>{d.from} - {d.to}</small>
+        </div>
+      ))}
+    </div>
+  </div>
+)
+
+const PhaseInfo = ({ info }) => (
+  <div style={{ height: 200, backgroundColor: info.color, color: 'white', padding: 12 }}>
+    <h2>{info.title}</h2>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      {info.data.reverse().map(d => (
+        <div key={d.title} style={{ display: 'flex', flex: 1, flexDirection: 'column', padding: 2, margin: 2 }}>
+          <h4>{d.title}</h4>
+          <div>{d.subtitle}</div>
+          <small>{d.from} - {d.to}</small>
+        </div>
+      ))}
+    </div>
+  </div>
+)
+
+const PhaseTech = ({ info }) => (
+  <div style={{ height: 200, backgroundColor: info.color, color: 'white', padding: 12 }}>
+    <h2>{info.title}</h2>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      {info.data.reverse().map(d => (
+        <div key={d.title} style={{ display: 'flex', flex: 1, flexDirection: 'column', padding: 2, margin: 2 }}>
+          <h4>{d.title}</h4>
+          <div>{d.subtitle}</div>
+          <small>{d.from} - {d.to}</small>
+        </div>
+      ))}
+    </div>
+  </div>
+)
+
+const PhasesContainer = ({ children }) => (
   <div className="phase-container">
     {children}
   </div>
@@ -100,6 +129,12 @@ const Phases = ({ children }) => (
 
 export {
   Phase,
-  Phases,
+  PhasesContainer,
+  // PhaseContent,
+  PhaseInfo,
+  PhaseExperience,
+  PhaseTech,
   Next,
+  PhaseHeader,
+  PhaseFooter,
 };
