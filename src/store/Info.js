@@ -8,7 +8,7 @@ const Info = (function () {
   return {
     info: [{
       id: 1,
-      title: 'Información Personal',
+      title: 'Fase Roja',
       color: '#FB6542',
       component: PhaseInfo,
       data: [{

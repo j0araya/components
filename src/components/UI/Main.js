@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dot, Line } from '../stepper/Stepper';
 import Phases from '../UI/Phases/Phases';
+import Information from '../UI/Info/Information';
 import Social from '../UI/Social/Social';
 import User from '../../store/User';
 import Info from '../../store/Info';
@@ -29,7 +30,7 @@ const style = {
 
 const Main = () => (
   <section className="landing">
-    <div style={style.main1}>
+    {/* <div style={style.main1}>
       <Dot color="#FF0000" />
       <Line />
       <Dot color="#0000FF" />
@@ -37,8 +38,9 @@ const Main = () => (
       <Dot color="#228B22" /> 
       <Line />
       <Dot color="#808080" />
-    </div>
-    <Phases info={Info.info} />
+    </div> */}
+    {/* <Phases info={Info.info} /> */}
+    <Information />
     <Social />
 
     {/* </div> */}
