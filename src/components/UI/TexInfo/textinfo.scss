@@ -1,0 +1,24 @@
+.text-info {
+  flex-direction: column;
+  color: grey;
+  
+  &-label {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  &-user {
+    font-size: 12px;
+    color: darkgray;
+  }
+
+  &-username {
+    font-size: 12px;
+  }
+
+  &-input {
+    font-size: 12px;
+  }
+}
