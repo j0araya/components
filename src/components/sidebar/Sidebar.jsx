@@ -5,12 +5,12 @@ import Hamburger from '../header/hamburger/hamburger';
 import './sidebar.scss';
 
 const Sidebar = ({ onSelect, options, selected, open, toggleHamburger }) => (
-  <Col className={`sidebar ${open ? 'open': 'close'}`}>
-    <Hamburger open={open} onClick={() => toggleHamburger(!open)}/>
+  <div className={`sidebar ${open ? 'open': 'close'}`}>
+    {/* <Hamburger open={open} onClick={() => toggleHamburger(!open)}/> */}
     {options.map(o => (
       <Col
         key={o.id}
-        className="item center-center p1"
+        className="item v-center p1"
         onClick={() => onSelect(o)}
       >
         <Row className={`icon p1 ${selected.id === o.id ? 'active' : ''}`}>
@@ -21,7 +21,7 @@ const Sidebar = ({ onSelect, options, selected, open, toggleHamburger }) => (
         </Row>
       </Col>
     ))}
-  </Col>
+  </div>
 );
 
 Sidebar.defaultProps = {

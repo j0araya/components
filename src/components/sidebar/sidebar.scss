@@ -1,22 +1,23 @@
 $background-color: rgba(45, 45, 45, 1);
 $text-color: rgb(170, 170, 170);
 $active-color: white;
-$nav-height: 10vh;
+$nav-height: 54px;
 
 .sidebar {
   position: absolute;
   left: 0;
-  top: 0;
+  top: var(--nav-height);
+  height: calc(100% - var(--nav-height));
   background-color: $background-color;
   .item {
     color: $text-color;
     font-weight: 100;
-    height: 74px;
+    height: 60px;
     .active {
       color: $active-color;
     }
     .icon {
-      font-size: 18px;
+      font-size: 24px;
     }
     .text {
       font-size: 12px;
@@ -24,7 +25,6 @@ $nav-height: 10vh;
   }
   .item:hover {
     cursor: pointer;
-    color: $active-color;
     background-color: rgba(158, 158, 158, 0.5);
   }
   &.open {

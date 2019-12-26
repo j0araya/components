@@ -16,8 +16,10 @@ $theme-colors: (
   
   
 $background-color: rgba(45, 45, 45, 1);
+$color-secondary: rgb(170, 170, 170);
 $text-color: rgb(170, 170, 170);
 $active-color: white;
+$color-primary: white;
 
 
 .bg-primary {
@@ -73,6 +75,66 @@ $active-color: white;
 .p0 {
   padding: 0;
 }
+
+.m5 {
+  margin: 16px 1% 16px 1%;
+}
+.m4 {
+  margin: 8px 1% 8px 1%;
+}
+.m3 {
+  margin: 4px 1% 4px 1%;
+}
+.m2 {
+  margin: 2px 1% 2px 1%;
+}
+.m1 {
+  margin: 1px 1% 1px 1%;
+}
+.m0 {
+  margin: 0;
+}
+
+.height0 {
+  height: 0px;
+}
+
+.height1 {
+  height: 8px;
+}
+
+.height2 {
+  height: 16px;
+}
+
+.height4 {
+  height: 64px;
+}
+
+.height5 {
+  height: 128px;
+}
+
+.border0 {
+  border-radius: 0px;
+  border: $color-secondary solid 1px;
+}
+
+.border1 {
+  border-radius: 1px;
+  border: $color-secondary solid 1px;
+}
+
+.border2 {
+  border-radius: 2px;
+  border: $color-secondary solid 1px;
+}
+
+.border2 {
+  border-radius: 3px;
+  border: $color-secondary solid 1px;
+}
+
 
 // ICON SIZE
 

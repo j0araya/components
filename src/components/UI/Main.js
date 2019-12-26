@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ApolloClient, { gql } from "apollo-boost";
+
 import { Dot, Line } from '../stepper/Stepper';
 import Phases from '../UI/Phases/Phases';
 import Information from '../UI/Info/Information';
@@ -9,9 +10,10 @@ import User from '../../store/User';
 import Info from '../../store/Info';
 import Header from '../header/Header';
 import SideBar from '../../components/sidebar/Sidebar';
+import List from '../../components/list/List';
 import { Row, Col } from '../../components/display/display';
-import { useQuery } from '@apollo/react-hooks';
-
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { UserItem } from '../../items/Items';
 // const user = new User();
 // console.log('uer', Info.info);
 const style = {
@@ -48,7 +50,24 @@ const GET_USERS = gql`
   }
 `;
 
+const ADD_ITEM = gql`
+  mutation addItem($name: String!, $description: String!) {
+    addItem(name: $name, description: $description)
+    {
+      id
+      name
+      description
+      createdAt
+    }
+  }
+`;
+
+
+
+const Item = ({ item }) => <div style={{ color: 'blue' }}>{item.name}</div>
+
 const Main = () => {
+  const [addItem, { data2: data }] = useMutation(ADD_ITEM);
   const { loading, error, data: { users } = { users: [] } } = useQuery(GET_USERS);
   const [selectedSidebar, selectSidebar] = useState({ id: 1 });
   const [hamburgerOpen, toggleHamburger] = useState(false);
@@ -58,7 +77,25 @@ const Main = () => {
   return (
     <>
       <Header toggleHamburger={toggleHamburger} open={hamburgerOpen} />
+      <SideBar
+        toggleHamburger={toggleHamburger}
+        onSelect={selectSidebar}
+        options={users}
+        selected={selectedSidebar}
+        open={hamburgerOpen}
+      />
       <section className="landing">
+        <Row className="p1">
+          <h2>Listado de Weas</h2>
+        </Row>
+        <List
+          items={users}
+          item={data => <UserItem user={data} key={data.id} />}
+        />
+
+        <div onClick={() => addItem({ variables: { name: 'dgdgd', description: '34444' } })}>
+          agregar
+        </div>
         {/* <div style={style.main1}>
       <Dot color="#FF0000" />
       <Line />
@@ -71,21 +108,14 @@ const Main = () => {
         {/* <Phases info={Info.info} /> */}
         {/* <Information /> */}
         {/* <Social /> */}
-        <Row style={{ height: 50, color: 'black' }}>
+        {/* <Row style={{ height: 50, color: 'black' }}>
           {users.map(u => (
             <Row key={u.id} className="h-center v-center">
               {u.name}
             </Row>
-          ))}
+          ))} */}
           {/* {selectedSidebar.name} */}
-        </Row>
-        <SideBar
-          toggleHamburger={toggleHamburger}
-          onSelect={selectSidebar} 
-          options={users} 
-          selected={selectedSidebar} 
-          open={hamburgerOpen}
-        />
+        {/* </Row> */}
         {/* <div className="history-main"> */}
         {/* <History /> */}
         {/* <History /> */}

@@ -2,21 +2,21 @@ $background-color: rgba(45, 45, 45, 1);
 $text-color: rgb(170, 170, 170);
 $active-color: white;
 
-.sidebar {
-  background-color: $background-color;
-  .item {
-    color: $text-color;
-    font-weight: 100;
-    .active {
-      color: $active-color;
-    }
-    .icon {
-      font-size: 28px;
-    }
-  }
-  .item:hover {
-    cursor: pointer;
-    color: $active-color;
-    background-color: rgba(158, 158, 158, 0.5);
-  }
-}
+// .list {
+//   background-color: $background-color;
+//   .item {
+//     color: $text-color;
+//     font-weight: 100;
+//     .active {
+//       color: $active-color;
+//     }
+//     .icon {
+//       font-size: 28px;
+//     }
+//   }
+//   .item:hover {
+//     cursor: pointer;
+//     color: $active-color;
+//     background-color: rgba(158, 158, 158, 0.5);
+//   }
+// }
