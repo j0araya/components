@@ -2,6 +2,7 @@
   --nav-height: 54px;
   --sidebar-width: 74px;
   --bg-primary: rgba(45, 45, 45, 1);
+  --bg-secondary: rgba(56, 56, 56,1);
   --text-color: rgb(170, 170, 170);
   --active-color: white;
   --text-primary: white;
@@ -75,7 +76,7 @@ nav {
   padding-top: 12px;
   padding-bottom: 12px;
   width: 100%;
-  background-color: rgb(24, 24, 24);
+  background-color: var(--bg-secondary);
 }
 
 /* .landing h1 {

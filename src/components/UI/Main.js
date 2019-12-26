@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ApolloClient, { gql } from "apollo-boost";
+import { gql } from "apollo-boost";
 
 import { Dot, Line } from '../stepper/Stepper';
 import Phases from '../UI/Phases/Phases';
@@ -10,10 +10,9 @@ import User from '../../store/User';
 import Info from '../../store/Info';
 import Header from '../header/Header';
 import SideBar from '../../components/sidebar/Sidebar';
-import List from '../../components/list/List';
 import { Row, Col } from '../../components/display/display';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { UserItem } from '../../items/Items';
+import { useMutation } from 'react-apollo';
+import { UserList } from '../../items/Items';
 // const user = new User();
 // console.log('uer', Info.info);
 const style = {
@@ -44,8 +43,16 @@ const GET_USERS = gql`
     users {
       name
       lastname
-      icon
       id
+    }
+  }
+`;
+
+const GET_USER = gql`
+  query getUser($id: ID!) {
+    getUser(id: $id) {
+      name
+    	lastname
     }
   }
 `;
@@ -62,40 +69,30 @@ const ADD_ITEM = gql`
   }
 `;
 
-
-
-const Item = ({ item }) => <div style={{ color: 'blue' }}>{item.name}</div>
-
 const Main = () => {
-  const [addItem, { data2: data }] = useMutation(ADD_ITEM);
-  const { loading, error, data: { users } = { users: [] } } = useQuery(GET_USERS);
-  const [selectedSidebar, selectSidebar] = useState({ id: 1 });
+  const [addItem, { data }] = useMutation(ADD_ITEM);
+  const [selectedSidebar, selectSidebar] = useState({ id: '1' });
   const [hamburgerOpen, toggleHamburger] = useState(false);
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
 
   return (
     <>
       <Header toggleHamburger={toggleHamburger} open={hamburgerOpen} />
       <SideBar
-        toggleHamburger={toggleHamburger}
         onSelect={selectSidebar}
-        options={users}
         selected={selectedSidebar}
         open={hamburgerOpen}
       />
       <section className="landing">
-        <Row className="p1">
-          <h2>Listado de Weas</h2>
+        <Row className="p3">
+          <h1>Listado de Weas</h1>
         </Row>
-        <List
-          items={users}
-          item={data => <UserItem user={data} key={data.id} />}
-        />
+        <Col className="p2">
+          <UserList selected={selectedSidebar} onSelect={selectSidebar}/>
+        </Col>
 
-        <div onClick={() => addItem({ variables: { name: 'dgdgd', description: '34444' } })}>
+        {/* <div onClick={() => addItem({ variables: { name: 'dgdgd', description: '34444' } })}>
           agregar
-        </div>
+        </div> */}
         {/* <div style={style.main1}>
       <Dot color="#FF0000" />
       <Line />
@@ -114,7 +111,7 @@ const Main = () => {
               {u.name}
             </Row>
           ))} */}
-          {/* {selectedSidebar.name} */}
+        {/* {selectedSidebar.name} */}
         {/* </Row> */}
         {/* <div className="history-main"> */}
         {/* <History /> */}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from '../display/display';
 import './list.scss';
 
-const List = ({ onSelect, items, item }) => {
+const List = ({ onSelect, items, item, hover }) => {
   return (
     <Col className="list">
       {items.map(i => item(i))}

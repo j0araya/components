@@ -1,7 +1,5 @@
 import React from 'react';
 import Main from './components/UI/Main';
-import SideBar from './components/sidebar/Sidebar.jsx';
-import { Row } from './components/display/display';
 import './styles/variables.scss';
 import './App.css';
 import ApolloClient, {

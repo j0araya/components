@@ -1,6 +1,27 @@
-.user-item {
+.list-item {
+  // -webkit-box-shadow:  6px 6px 5px 0px rgba(0, 0, 0, 0.51), -6px -6px 5px 0px rgba(214,214,214,1);
+  // -moz-box-shadow:  6px 6px 5px 0px rgba(0, 0, 0, 0.51), -6px -6px 5px 0px rgba(214,214,214,1);
+  // box-shadow:  6px 6px 5px 0px rgba(0, 0, 0, 0.51), -6px -6px 5px 0px rgba(214,214,214,1);
   &:hover {
-    background-color: rgb(75, 74, 74);
+    // background-color: rgb(75, 74, 74);
+    cursor: pointer;
   }
+  margin-bottom: 12px;
   // background-color: rgb(75, 74, 74);
+}
+
+// .list-item:hover {
+//   // background-color: #F5F5F5EE;
+//   -webkit-box-shadow: 6px 12px 12px 2px rgba(97,97,97,0.63);
+//   -moz-box-shadow: 6px 12px 12px 2px rgba(97,97,97,0.63);
+//   box-shadow: 6px 12px 12px 2px rgba(97,97,97,0.63);
+//   transform: translateY(-10px);
+//   transition: .3s;
+// }
+
+.menu-list-item {
+  margin-left: auto;
+  align-items: center;
+  padding: 0 16px 0 8px;
+  cursor: pointer;
 }
