@@ -1,5 +1,5 @@
 .sidebar {
-  position: absolute;
+  position: fixed;
   left: 0;
   width: var(--sidebar-width);
   top: var(--nav-height);

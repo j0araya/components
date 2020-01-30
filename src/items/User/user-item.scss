@@ -23,17 +23,21 @@
   display: block;
   visibility: visible;
   opacity: 1;
-  transition: opacity 0.5s ease-in,
-    height 0.5s ease-in,
+  // background-color: green;
+  transition: opacity 1.5s ease-in,
+    height 1.5s ease-in,
+    background-color 1.5s;
 }
 .item-view.close {
   visibility: hidden;
   opacity: 0;
-  height: 0;
+  height: 0%;
   display: none;
-  transition: visibility 0.5s ease-out,
-    opacity 0.5s ease-out,
-    height 0.5s linear;
+  background-color: blue;
+  // transition: opacity 1.5s ease-out,
+  //   opacity 1.5s ease-out,
+  //   height 1.5s linear,
+  //   background-color 1.5s;
   // transition: height 3s ease-out;
   // transition: background-color 3s ease-out;
   // transition: visibility 0.5s 0.5s, opacity 0.5s ease-out;

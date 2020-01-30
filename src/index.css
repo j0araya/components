@@ -36,7 +36,7 @@ nav {
   background: var(--bg-primary);
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: fixed;
   z-index: var(--z-index-navbar);
   width: 100%;
 }
@@ -74,6 +74,7 @@ nav {
 }
 
 .landing {
+  height: calc(100vh - var(--nav-height));
   box-sizing: border-box;
   color: var(--text-primary);
   padding-left: var(--sidebar-width);
@@ -81,6 +82,7 @@ nav {
   margin-top: var(--nav-height);
   background-color: var(--bg-secondary);
   z-index: var(--z-index-primary);
+  overflow-y: auto;
 }
 
 /* .landing h1 {
