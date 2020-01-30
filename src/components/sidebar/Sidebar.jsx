@@ -16,8 +16,10 @@ const GET_ITEMS = gql`
   }
 `;
 
+const defaultValue = { items: [{ id: '1' }] };
+
 const Sidebar = ({ onSelect, selected, open }) => {
-  const { loading, error, data: { items } = { items: [{ id: '1' }] } } = useQuery(GET_ITEMS);
+  const { loading, error, data: { items } = defaultValue } = useQuery(GET_ITEMS);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (

@@ -4,9 +4,9 @@ import { Row, Col } from '../../components/display/display';
 import './user-item.scss';
 import moment from 'moment';
 
-const UserItem = ({ user, menu }) => {
+const UserItem = ({ user, menu, onSelect }) => {
   return (
-    <Row className="list-item p2 height4 text-primary">
+    <Row className="list-item p2 height4 text-primary" onClick={() => onSelect(user)}>
       <Col className="flex" style={{ justifyContent: 'space-between' }}>
         <Row>
           <Row>

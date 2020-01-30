@@ -1,0 +1,124 @@
+.history-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.history-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 8px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.history-content {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: blue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.history-dot {
+  height: 70%;
+  width: 70%;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.history-dot:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background-color: yellow;
+}
+
+.history-info {
+  top: 64px;
+  min-width: 200px;
+  background-color: whitesmoke;
+  padding: 12px;
+  border: solid 2px cornflowerblue;
+  border-radius: 4px;
+  color: grey;
+}
+
+.history-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.history-info-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: grey;
+}
+
+.history-badge {
+  background-color: cornflowerblue;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 4px 2px 4px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.history-info-content {
+  margin: 16px 0px 16px 0px;
+  font-size: 14px;
+  color: grey;
+}
+
+.history-info-footer {
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 8px 0px 0px 0px;
+}
+
+@-webkit-keyframes showinfo {
+  25% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1.8);
+            transform: scale(1.8);
+  }
+}
+
+@keyframes showinfo {
+  25% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1.8);
+            transform: scale(1.8);
+  }
+}
+/*# sourceMappingURL=history.css.map */

@@ -5,14 +5,28 @@ import './App.css';
 import ApolloClient, {
   gql,
 } from "apollo-boost";
+import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
 import {
   graphql,
   ApolloProvider,
 } from 'react-apollo';
 
+// const cache = new InMemoryCache();
+
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://graphql-test01.herokuapp.com/",
+  engine: {
+    apiKey: "service:qwerty-graph:-0tcB8w1oz_SVmcdB2ti8Q",
+    schemaTag: "production"
+  }
 });
+
+// const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+//   cache,
+//   link
+// });
+
 
 function App() {
   return (

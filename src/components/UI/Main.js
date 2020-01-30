@@ -13,6 +13,7 @@ import SideBar from '../../components/sidebar/Sidebar';
 import { Row, Col } from '../../components/display/display';
 import { useMutation } from 'react-apollo';
 import { UserList } from '../../items/Items';
+import { UserContainer } from '../../containers/Containers';
 // const user = new User();
 // console.log('uer', Info.info);
 const style = {
@@ -70,10 +71,8 @@ const ADD_ITEM = gql`
 `;
 
 const Main = () => {
-  const [addItem, { data }] = useMutation(ADD_ITEM);
   const [selectedSidebar, selectSidebar] = useState({ id: '1' });
   const [hamburgerOpen, toggleHamburger] = useState(false);
-
   return (
     <>
       <Header toggleHamburger={toggleHamburger} open={hamburgerOpen} />
@@ -83,12 +82,8 @@ const Main = () => {
         open={hamburgerOpen}
       />
       <section className="landing">
-        <Row className="p3">
-          <h1>Listado de Weas</h1>
-        </Row>
-        <Col className="p2">
-          <UserList selected={selectedSidebar} onSelect={selectSidebar}/>
-        </Col>
+        <UserContainer />
+
 
         {/* <div onClick={() => addItem({ variables: { name: 'dgdgd', description: '34444' } })}>
           agregar

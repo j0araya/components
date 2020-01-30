@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACH,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;CAIpB;;AAND,AAGE,IAHE,CAGA,MAAM,CAAC;EACP,IAAI,EAAE,CAAC;CACR",
+    "sources": [
+        "row.scss"
+    ],
+    "names": [],
+    "file": "row.css"
+}

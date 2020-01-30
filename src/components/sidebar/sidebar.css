@@ -1,0 +1,47 @@
+.sidebar {
+  position: absolute;
+  left: 0;
+  width: var(--sidebar-width);
+  top: var(--nav-height);
+  height: calc(100% - var(--nav-height));
+  background-color: #2d2d2d;
+  z-index: var(--z-index-sidebar);
+}
+
+.sidebar .item {
+  color: #aaaaaa;
+  font-weight: 100;
+  height: 60px;
+}
+
+.sidebar .item .active {
+  color: white;
+}
+
+.sidebar .item .icon {
+  font-size: 24px;
+}
+
+.sidebar .item .text {
+  font-size: 12px;
+}
+
+.sidebar .item:hover {
+  cursor: pointer;
+  background-color: rgba(158, 158, 158, 0.5);
+}
+
+.sidebar.open {
+  width: 500px;
+  -webkit-transition: width 1s;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 1s;
+}
+
+.sidebar.close {
+  width: 72px;
+  -webkit-transition: width 1s;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 1s;
+}
+/*# sourceMappingURL=sidebar.css.map */

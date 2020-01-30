@@ -12,12 +12,6 @@ const item = ({ id, name, icon }) => (
 
 const MenuItem = ({ options }) => (
   <Row className="container-menu-item">
-    {/* <Row className="menu-item active-primary">
-      <i className="fas fa-ellipsis-v" />
-    </Row>
-    <Row className="menu-options">
-      {options.map(item)}
-    </Row> */}
     <Row className="menu-options active-primary">
       {options.map(item)}
     </Row>

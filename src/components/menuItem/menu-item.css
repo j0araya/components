@@ -5,20 +5,21 @@
   padding: 8px 4px;
 }
 
-.list:hover {
-  & .menu-item {
-    display: block;
-  }
+.list:hover .menu-item {
+  display: block;
 }
+
 .list-item {
   position: relative;
 }
 
-.list-item:hover {
-  & .menu-options {
-    display: flex;
-    align-items: center;
-  }
+.list-item:hover .menu-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .menu-options {
@@ -32,7 +33,4 @@
   font-size: 14px;
   padding: 0px 8px;
 }
-
-// .menu-option:last-of-type {
-//   padding-right: 0;
-// }
+/*# sourceMappingURL=menu-item.css.map */

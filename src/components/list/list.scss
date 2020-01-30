@@ -2,6 +2,10 @@ $background-color: rgba(45, 45, 45, 1);
 $text-color: rgb(170, 170, 170);
 $active-color: white;
 
+.list {
+  overflow: auto;
+}
+
 .list-item {
   background-color: rgb(117, 117, 117);
 }

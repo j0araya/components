@@ -5,7 +5,7 @@ import './list.scss';
 
 const List = ({ onSelect, items, item, hover }) => {
   return (
-    <Col className="list">
+    <Col className="list p2">
       {items.map(i => item(i))}
     </Col>
   );

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACH,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CAIvB;;AAND,AAGE,IAHE,CAGA,MAAM,CAAC;EACP,IAAI,EAAE,CAAC;CACR",
+    "sources": [
+        "col.scss"
+    ],
+    "names": [],
+    "file": "col.css"
+}

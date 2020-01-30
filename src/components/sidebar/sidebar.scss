@@ -2,13 +2,16 @@ $background-color: rgba(45, 45, 45, 1);
 $text-color: rgb(170, 170, 170);
 $active-color: white;
 $nav-height: 54px;
+$bar-width: 72px;
 
 .sidebar {
   position: absolute;
   left: 0;
+  width: var(--sidebar-width);
   top: var(--nav-height);
   height: calc(100% - var(--nav-height));
   background-color: $background-color;
+  z-index: var(--z-index-sidebar);
   .item {
     color: $text-color;
     font-weight: 100;

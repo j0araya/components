@@ -1,0 +1,39 @@
+.list-item {
+  margin-bottom: 12px;
+}
+
+.list-item:hover {
+  cursor: pointer;
+}
+
+.list-item:last-of-type {
+  margin-bottom: 0;
+}
+
+.menu-list-item {
+  margin-left: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 16px 0 8px;
+  cursor: pointer;
+}
+
+.item-view.open {
+  height: 100%;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in, height 0.5s ease-in;
+  transition: opacity 0.5s ease-in, height 0.5s ease-in;
+}
+
+.item-view.close {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  display: none;
+  -webkit-transition: visibility 0.5s ease-out, opacity 0.5s ease-out, height 0.5s linear;
+  transition: visibility 0.5s ease-out, opacity 0.5s ease-out, height 0.5s linear;
+}
+/*# sourceMappingURL=user-item.css.map */

@@ -3,6 +3,7 @@ import { gql } from "apollo-boost";
 import { useQuery } from 'react-apollo';
 import PropTypes from 'prop-types';
 import { List, UserItem, MenuItem } from '../../items/Items';
+import { Row, Col } from '../../components/display/display';
 import './user-item.scss';
 
 const GET_USERS = gql`
@@ -16,23 +17,33 @@ const GET_USERS = gql`
   }
 `;
 
-const UserList = ({ onSelect, selected }) => {
+const UserList = ({ onSelect, selected, show }) => {
   const { loading, error, data: { users } = { users: [] } } = useQuery(GET_USERS);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (
-    <List
-      items={users}
-      selected={selected || users[0] || {}}
-      className="list"
-      item={item =>
-        <UserItem
-          user={item}
-          key={item.id}
-          onSelect={onSelect}
-          menu={<MenuItem />}
-        />}
-    />
+    <div className={`item-view ${show ? 'open' : 'close'}`}>
+      {loading
+        ? 'Loading...'
+        : (
+          <>
+            <Row className="p2">
+              <h1>Lista</h1>
+            </Row>
+            <List
+              items={users}
+              selected={selected}
+              item={item =>
+                <UserItem
+                  user={item}
+                  key={item.id}
+                  onSelect={onSelect}
+                  menu={<MenuItem />}
+                />}
+            />
+          </>
+        )}
+    </div>
   )
 }
 
@@ -46,7 +57,7 @@ UserList.propTypes = {
 UserList.defaultProps = {
   onSelect: () => { },
   selected: {
-    id: '1',
+    id: '0',
   }
 };
 
