@@ -18,14 +18,9 @@ const client = new ApolloClient({
   uri: "https://graphql-test01.herokuapp.com/",
   engine: {
     apiKey: "service:qwerty-graph:-0tcB8w1oz_SVmcdB2ti8Q",
-    schemaTag: "production"
+    schemaTag: "development"
   }
 });
-
-// const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-//   cache,
-//   link
-// });
 
 
 function App() {
