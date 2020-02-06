@@ -1,6 +1,6 @@
 {
-  "homepage": "http://j0araya.github.io/test",
-  "name": "cv",
+  "homepage": ".",
+  "name": "test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "apollo-boost": "^0.4.7",
+    "aws-sdk": "^2.612.0",
     "graphql": "^14.5.8",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
