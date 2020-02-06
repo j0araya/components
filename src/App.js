@@ -2,6 +2,10 @@ import React from 'react';
 import Main from './components/UI/Main';
 import './styles/variables.scss';
 import './App.css';
+
+import FacebookLogin from 'react-facebook-login';
+import { GoogleLogin } from 'react-google-login'
+
 import ApolloClient, {
   gql,
 } from "apollo-boost";
@@ -24,6 +28,7 @@ const client = new ApolloClient({
 
 
 function App() {
+  
   return (
     <div className="app">
       {/* <Header /> */}

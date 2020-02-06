@@ -14,6 +14,9 @@ import { Row, Col } from '../../components/display/display';
 import { useMutation } from 'react-apollo';
 import { UserList } from '../../items/Items';
 import { UserContainer } from '../../containers/Containers';
+import { TextInput } from '../../components/inputs/Inputs';
+
+
 // const user = new User();
 // console.log('uer', Info.info);
 const style = {
@@ -62,7 +65,7 @@ const ADD_ITEM = gql`
   mutation addItem($name: String!, $description: String!) {
     addItem(name: $name, description: $description)
     {
-      id
+
       name
       description
       createdAt
@@ -73,6 +76,8 @@ const ADD_ITEM = gql`
 const Main = () => {
   const [selectedSidebar, selectSidebar] = useState({ id: '1' });
   const [hamburgerOpen, toggleHamburger] = useState(false);
+
+
   return (
     <>
       <Header toggleHamburger={toggleHamburger} open={hamburgerOpen} />
@@ -82,6 +87,8 @@ const Main = () => {
         open={hamburgerOpen}
       />
       <section className="landing">
+        <TextInput />
+        <button id="create" onClick={() =>{}}> hola que ase</button>
         <UserContainer />
 
 
