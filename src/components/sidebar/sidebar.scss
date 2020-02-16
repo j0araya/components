@@ -1,43 +1,47 @@
-$background-color: rgba(45, 45, 45, 1);
-$text-color: rgb(170, 170, 170);
-$active-color: white;
-$nav-height: 54px;
-$bar-width: 72px;
+$background-color: var(--bg-primary);
+$active-bg: var(--active-bg);
+$text-color: var(--text-color);
+$active-color: var(--active-color);
+$nav-height: var(--nav-height);
+$bar-width: var(--sidebar-width);
+$hover-color: var(--hover-color);
+$hover-bg: var(--hover-bg);
 
 .sidebar {
   position: absolute;
   left: 0;
-  width: var(--sidebar-width);
-  top: var(--nav-height);
-  height: calc(100% - var(--nav-height));
+  width: $bar-width;
+  top: $nav-height;
+  height: calc(100vh - #{$nav-height});
   background-color: $background-color;
   z-index: var(--z-index-sidebar);
+  color: $text-color;
   .item {
-    color: $text-color;
     font-weight: 100;
     height: 60px;
-    .active {
-      color: $active-color;
-    }
     .icon {
       font-size: 24px;
     }
     .text {
       font-size: 12px;
     }
-  }
-  .item:hover {
-    cursor: pointer;
-    background-color: rgba(158, 158, 158, 0.5);
+    &.active {
+      // color: $hover-color;
+      background-color: $hover-bg;
+    }
+    &:not(.active):hover {
+      cursor: pointer;
+      background-color: $active-bg;
+    }
   }
   &.open {
     width: 500px;
-    -webkit-transition: width 1s; /* For Safari 3.1 to 6.0 */
-    transition: width 1s;
+    -webkit-transition: width 0.4s ease-in; /* For Safari 3.1 to 6.0 */
+    transition: width 0.4s;
   }
   &.close {
     width: 72px;
-    -webkit-transition: width 1s; /* For Safari 3.1 to 6.0 */
-    transition: width 1s;
+    -webkit-transition: width 0.6s; /* For Safari 3.1 to 6.0 */
+    transition: width 0.6s ease-out;
   }
 }

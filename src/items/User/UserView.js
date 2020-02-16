@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { gql } from "apollo-boost";
-import { useQuery } from 'react-apollo';
+import { useQuery, gql } from '@apollo/client';
 import { Row, Col } from '../../components/display/display';
 
 const GET_USER = gql`
@@ -16,7 +15,7 @@ const GET_USER = gql`
 
 const UserView = ({ user, show, onClose }) => {
   const { loading, error, data: { getUser } = { getUser: [] } } = useQuery(GET_USER, {
-    variables: { id: user.id }
+    variables: { id: '5e390f291d5725d03944fa8c' }
   });
   if (error) return `Error! ${error.message}`;
   return (

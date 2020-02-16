@@ -82,7 +82,7 @@ const Main = () => {
     <>
       <Header toggleHamburger={toggleHamburger} open={hamburgerOpen} />
       <SideBar
-        onSelect={selectSidebar}
+        onSelect={(a) => selectSidebar(a)}
         selected={selectedSidebar}
         open={hamburgerOpen}
       />

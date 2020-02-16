@@ -1,0 +1,38 @@
+button {
+  &.btn {
+    border-radius: 2;
+    border: solid 1px white;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 12px;
+    outline: none;
+    cursor: pointer;
+    flex: 0;
+    display: flex;
+    justify-content: center;
+    &.btn-primary {
+      background-color: hsl(200deg, 50%, 50%);
+      transition: background 0.6s;
+      background-position: center;
+      background-image: radial-gradient(circle, transparent 1%, hsl(200deg, 50%, 55%) 1%);
+      background-size: 12000%;
+      &:active {
+        background-color: hsla(200deg, 50%, 50%, 0.32);
+        transition: background 0s;
+        background-size: 100%;
+      }
+    }
+    & > .btn-text {
+      pointer-events: none;
+      white-space: nowrap;
+    }
+  }
+}
+
+@keyframes ripple {
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

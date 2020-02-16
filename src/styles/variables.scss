@@ -6,6 +6,15 @@ $grey: #808080 !default;
 $border-radius: 0.25rem !default;
 $box-shadow: 0 0.5rem 1rem rgba($blue, 0.15) !default;
 
+$background-color: var(--bg-primary);
+$active-bg: var(--active-bg);
+$text-color: var(--text-color);
+$active-color: var(--active-color);
+$nav-height: var(--nav-height);
+$bar-width: var(--sidebar-width);
+$hover-color: var(--hover-color);
+$hover-bg: var(--hover-bg);
+
 $theme-colors: (
   "primary": royalblue,
   "secondary": green,

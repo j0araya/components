@@ -1,36 +1,22 @@
 import React from 'react';
-import { gql } from "apollo-boost";
-import { useQuery } from 'react-apollo';
 import PropTypes from 'prop-types';
 import { Row, Col } from '../display/display';
 import './sidebar.scss';
 
-const GET_ITEMS = gql`
-  {
-    items {
-      id
-      name
-      description
-      icon
-    }
-  }
-`;
-
-const defaultValue = { items: [{ id: '1' }] };
-
 const Sidebar = ({ onSelect, selected, open }) => {
-  const { loading, error, data: { items } = defaultValue } = useQuery(GET_ITEMS);
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
+  const items = [
+    { id: 1, name: 'Item 1', icon: 'fa fa-user'},
+    { id: 2, name: 'item 2', icon: 'fa fa-users'},
+  ];
   return (
     <div className={`sidebar ${open ? 'open' : 'close'}`}>
       {items.map(i => (
         <Col
           key={i.id}
-          className="item v-center p1"
+          className={`item v-center p1 ${selected.id === i.id ? 'active' : ''}`}
           onClick={() => onSelect(i)}
         >
-          <Row className={`icon p1 ${selected.id === i.id ? 'active' : ''}`}>
+          <Row className="icon p1">
             <i className={i.icon} />
           </Row>
           <Row className="text">

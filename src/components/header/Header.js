@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Row, Col } from '../../components/display/display';
 import Hamburger from './hamburger/hamburger';
 import Logo from '../../images/me.jpeg';
+import { Toogle, Toggle } from '../../components/inputs/Inputs';
 import './header.scss';
 
 const styles = {
@@ -79,6 +80,7 @@ const Header = ({ open, toggleHamburger, }) => {
     <nav>
       <Row>
         <Hamburger active={open} onClick={() => toggleHamburger(!open)} />
+        <Toggle />
         {/* <div style={styles.container}>
           <div style={styles.profile} className="profile">
             <Photo />
