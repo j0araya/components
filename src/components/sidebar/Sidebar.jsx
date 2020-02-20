@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Row, Col } from '../display/display';
 import './sidebar.scss';
 
-const Sidebar = ({ onSelect, selected, open }) => {
+const Sidebar = ({ onSelect, selected, open, right }) => {
   const items = [
     { id: 1, name: 'Item 1', icon: 'fa fa-user'},
     { id: 2, name: 'item 2', icon: 'fa fa-users'},
   ];
   return (
-    <div className={`sidebar ${open ? 'open' : 'close'}`}>
+    <div className={`sidebar ${open ? 'open' : 'close'} ${right ? 'right' : 'left'}`}>
       {items.map(i => (
         <Col
           key={i.id}

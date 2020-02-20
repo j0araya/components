@@ -1,6 +1,7 @@
 :root {
   --nav-height: 54px;
   --sidebar-width: 74px;
+  --sidebar-width-open: 500px;
   --bg-primary: rgba(45, 45, 45, 1);
   --bg-secondary: rgba(56, 56, 56, 1);
   --text-color: white;

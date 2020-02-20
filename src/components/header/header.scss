@@ -1,5 +1,16 @@
+$background-color: var(--bg-primary);
+$active-bg: var(--active-bg);
+$text-color: var(--text-color);
+$active-color: var(--active-color);
+$nav-height: var(--nav-height);
+$sidebar-width: var(--sidebar-width);
+$sidebar-width-open: var(--sidebar-width-open);
+$hover-color: var(--hover-color);
+$hover-bg: var(--hover-bg);
+
 .profile {
   font-family: "Open Sans", sans-serif;
+  color: $text-color;
 }
 
 .profile-info-container {
@@ -58,4 +69,17 @@
   color: white;
   text-decoration: none;
   // flex: 0;
+}
+
+.width-sidebar {
+  position: absolute;
+  right: 0;
+  top: 8px;
+  width: calc(#{$sidebar-width} - 2px);
+  &.open {
+    width: calc(#{$sidebar-width-open} - 2px);
+  }
+  &.close {
+    width: calc(#{$sidebar-width} - 2px);
+  }
 }

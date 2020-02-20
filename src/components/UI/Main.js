@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { gql } from "apollo-boost";
 
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import GoogleLogin from 'react-google-login'
+
 import { Dot, Line } from '../stepper/Stepper';
 import Phases from '../UI/Phases/Phases';
 import Information from '../UI/Info/Information';
@@ -73,20 +76,67 @@ const ADD_ITEM = gql`
   }
 `;
 
-const Main = () => {
-  const [selectedSidebar, selectSidebar] = useState({ id: '1' });
-  const [hamburgerOpen, toggleHamburger] = useState(false);
+const Button = ({ name , onClick }) => (
+  <div>
+    <button type="button" onClick={onClick}> {name} </button>
+  </div>
+);
 
+const Main = ({ onLogin, user }) => {
+  const [selectedLeft, selectLeft] = useState({ id: '1' });
+  const [leftOpen, toggleLeft] = useState(false);
+
+  const [selectedRight, selectRight] = useState({});
+  const [rightOpen, toggleRight] = useState(false);
+
+  const responseFacebook = (response) => {
+    console.log('facbook', response);
+    onLogin(response);
+  }
+  const responseGoogle = (response) => {
+    console.log('google', response);
+    onLogin(response);
+  }
 
   return (
     <>
-      <Header toggleHamburger={toggleHamburger} open={hamburgerOpen} />
+      <Header 
+        toggleLeft={toggleLeft}
+        toggleRight={toggleRight}
+        leftOpen={leftOpen} 
+        rightOpen={rightOpen}
+        user={user}
+
+      />
       <SideBar
-        onSelect={(a) => selectSidebar(a)}
-        selected={selectedSidebar}
-        open={hamburgerOpen}
+        onSelect={(a) => selectLeft(a)}
+        selected={selectedLeft}
+        open={leftOpen}
+      />
+       <SideBar
+        onSelect={(a) => selectRight(a)}
+        selected={selectedRight}
+        open={rightOpen}
+        right
       />
       <section className="landing">
+      <FacebookLogin
+          appId="1558077494339537" //APP ID NOT CREATED YEt
+          fields="name,email,picture"
+          callback={responseFacebook}
+          render={({ onClick }) => <Button name="FB" onClick={onClick} />}
+        />
+        <br />
+        <br />
+
+
+        <GoogleLogin
+          clientId="" //CLIENTID NOT CREATED YET
+          buttonText="LOGIN WITH GOOGLE"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+        />
+        {/* <Header /> */}
         <TextInput />
         <button id="create" onClick={() =>{}}> hola que ase</button>
         <UserContainer />

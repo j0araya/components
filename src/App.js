@@ -1,10 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Main from './components/UI/Main';
 import './styles/variables.scss';
 import './App.css';
-
-import FacebookLogin from 'react-facebook-login';
-import { GoogleLogin } from 'react-google-login'
 
 import { ApolloClient, ApolloProvider } from '@apollo/client';
 
@@ -27,13 +24,20 @@ const client = new ApolloClient({
   }
 });
 
+const Button = ({ name , onClick }) => (
+  <div>
+    <button type="button" onClick={onClick}> {name} </button>
+  </div>
+);
+
+
 function App() {
-  
+  const [user, onLogin] = useState(undefined);
+  console.log('user', user);
   return (
     <div className="app">
       <ApolloProvider client={client}>
-        {/* <Header /> */}
-        <Main />
+        <Main onLogin={onLogin} user={user} />
       </ApolloProvider>
     </div>
   );
