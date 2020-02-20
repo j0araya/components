@@ -4,9 +4,9 @@ import { useQuery, gql } from '@apollo/client';
 import { Row, Col } from '../../components/display/display';
 
 const GET_USER = gql`
-  query getUser($id: ID!) {
-    getUser(id: $id) {
-      id
+  query user($id: String!) {
+    user(id: $id) {
+      _id
       name
     	lastname
     }

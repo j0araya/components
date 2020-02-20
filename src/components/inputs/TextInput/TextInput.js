@@ -4,11 +4,14 @@ import { useMutation, gql } from '@apollo/client';
 import './text-input.scss';
 
 const ADD_USER = gql`
-  mutation addUser($name: String!, $description: String!) {
-    addUser(name: $name, description: $description) {
+  mutation addUser($name: String!, $lastname: String!, $email: String!, $description: String!) {
+    addUser(name: $name, lastname: $lastname, email: $email, description: $description) {
+      _id
+      email
       name
+      lastname
     	description
-    }
+    } 
   }
 `;
 
@@ -21,6 +24,7 @@ const Button = ({ onClick2 }) => {
     const y = (clientY - offsetTop) / offsetHeight;
     // console.log(e, 'click', click);
     console.log('ripple', x, y);
+    onClick2();
     // root.style.setProperty('--ripple-x', x);
     // root.style.setProperty('--ripple-y', y);
     // console.log('offsetWidth', offsetWidth, 'offsetHeight', offsetHeight, 'offsetTop', offsetTop, 'offsetLeft', offsetLeft, 'pos', pos)
@@ -35,12 +39,21 @@ const Button = ({ onClick2 }) => {
 };
 
 const TextInput = () => {
-  let name = 'dsd';
-  let description = 'asdsad';
+  let name, description, lastname, email;
   const [addUser, { data }] = useMutation(ADD_USER);
-  const onClick = (e) => {
-    console.log(e)
-  };
+  if (data && data.addUser) {
+    console.log('sadasda', data.addUser);
+  }
+  // const onClick = (e) => {
+  //   console.log(e)
+  //   addUser({
+  //     variables: {
+  //       name: name.value,
+  //       lastname: 'asdsd',
+  //       description: description.value,
+  //     }
+  //   });
+  // };
   return (
     <div>
       <form
@@ -49,8 +62,13 @@ const TextInput = () => {
           addUser({
             variables: {
               name: name.value,
+              lastname: lastname.value,
+              email: email.value,
               description: description.value,
-            }
+            },
+            update: true,
+          
+            onComplete: (a) => console.log('complete',a),
           });
         }}
       >
@@ -58,9 +76,16 @@ const TextInput = () => {
           ref={node => name = node}
         />
         <input
+          ref={node => lastname = node}
+        />
+        <input
+          ref={node => email = node}
+        />
+        <input
           ref={node => description = node}
         />
-        <Button onClick2={onClick} />
+        <button type="submit" > blaaaaaaaa </button>
+        {/* <Button onClick2={onClick} /> */}
       </form>
     </div>
   );

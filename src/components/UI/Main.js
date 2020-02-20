@@ -64,18 +64,6 @@ const GET_USER = gql`
   }
 `;
 
-const ADD_ITEM = gql`
-  mutation addItem($name: String!, $description: String!) {
-    addItem(name: $name, description: $description)
-    {
-
-      name
-      description
-      createdAt
-    }
-  }
-`;
-
 const Button = ({ name , onClick }) => (
   <div>
     <button type="button" onClick={onClick}> {name} </button>
