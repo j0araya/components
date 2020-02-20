@@ -13,11 +13,12 @@ const UserItem = ({ user, menu, onSelect }) => {
             <i className="fas fa-user-circle" style={{ fontSize: 36, paddingRight: 8 }} />
           </Row>
           <Col>
-            <Col>
-              <h3 className="active-primary p0 m0">{`${user.name} ${user.lastname}`}</h3>
-            </Col>
+            <Row style={{ display: 'flex', flex: 1, alignItems: 'flex-end' }}>
+              <h3 className="active-primary p0 m0">{`${user.name} ${user.lastname} `}</h3>
+              <span style={{ marginLeft: 8 }}>{` (${user.description})`}</span>
+            </Row>
             <Col style={{ fontSize: 14 }}>
-              {user.description}
+             {user.email}
             </Col>
           </Col>
           {menu}
@@ -27,7 +28,7 @@ const UserItem = ({ user, menu, onSelect }) => {
         </Row>
         <Row style={{ justifyContent: 'space-between', paddingTop: 4 }}>
           <Row>
-            <small>{`${moment(new Date()).from(new Date())}`}</small>
+            <small>{`${moment(user.updated_date).from(new Date())}`}</small>
           </Row>
           <Row>
             <small> {moment().format("DD MMM")}</small>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { gql } from "apollo-boost";
+import { useMutation, gql } from '@apollo/client';
 
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GoogleLogin from 'react-google-login'
@@ -14,7 +14,6 @@ import Info from '../../store/Info';
 import Header from '../header/Header';
 import SideBar from '../../components/sidebar/Sidebar';
 import { Row, Col } from '../../components/display/display';
-import { useMutation } from 'react-apollo';
 import { UserList } from '../../items/Items';
 import { UserContainer } from '../../containers/Containers';
 import { TextInput } from '../../components/inputs/Inputs';
@@ -64,13 +63,27 @@ const GET_USER = gql`
   }
 `;
 
-const Button = ({ name , onClick }) => (
+const ADD_USER = gql`
+  mutation addUser($name: String!, $lastname: String!, $email: String!, $description: String!) {
+    addUser(name: $name, lastname: $lastname, email: $email, description: $description) {
+      _id
+      email
+      name
+      lastname
+    	description
+    } 
+  }
+`;
+
+const Button = ({ name, onClick }) => (
   <div>
     <button type="button" onClick={onClick}> {name} </button>
   </div>
 );
 
 const Main = ({ onLogin, user }) => {
+  const [addUser, { data }] = useMutation(ADD_USER);
+
   const [selectedLeft, selectLeft] = useState({ id: '1' });
   const [leftOpen, toggleLeft] = useState(false);
 
@@ -79,19 +92,41 @@ const Main = ({ onLogin, user }) => {
 
   const responseFacebook = (response) => {
     console.log('facbook', response);
-    onLogin(response);
+    const { name, email, graphDomain } = response;
+    addUser({
+      variables: {
+        name: name.split(' ')[0],
+        lastname: name.split(' ')[1] || '',
+        description: "Facebook",
+        email,
+      }
+    });
+    // onLogin(response);
   }
   const responseGoogle = (response) => {
     console.log('google', response);
+    const { profileObj } = response;
+    addUser({
+      variables: {
+        name: profileObj.givenName,
+        lastname: profileObj.familyName,
+        description: "Google",
+        email: profileObj.email,
+      }
+    });
     onLogin(response);
+  }
+
+  if (data && data.addUser) {
+    console.log('sadasda', data.addUser);
   }
 
   return (
     <>
-      <Header 
+      <Header
         toggleLeft={toggleLeft}
         toggleRight={toggleRight}
-        leftOpen={leftOpen} 
+        leftOpen={leftOpen}
         rightOpen={rightOpen}
         user={user}
 
@@ -101,64 +136,31 @@ const Main = ({ onLogin, user }) => {
         selected={selectedLeft}
         open={leftOpen}
       />
-       <SideBar
+      <SideBar
         onSelect={(a) => selectRight(a)}
         selected={selectedRight}
         open={rightOpen}
         right
       />
       <section className="landing">
-      <FacebookLogin
+        <FacebookLogin
           appId="1558077494339537" //APP ID NOT CREATED YEt
           fields="name,email,picture"
           callback={responseFacebook}
-          render={({ onClick }) => <Button name="FB" onClick={onClick} />}
+          render={({ onClick }) => <Button name="Facebook" onClick={onClick} />}
         />
         <br />
         <br />
-
-
         <GoogleLogin
-          clientId="" //CLIENTID NOT CREATED YET
-          buttonText="LOGIN WITH GOOGLE"
+          clientId="180745944117-svq2fn0bgco8vohfkpqt1rnts9h73dft.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
+          render={({ onClick, disabled }) => <Button name="Google" onClick={onClick} />}
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
         />
-        {/* <Header /> */}
-        <TextInput />
-        <button id="create" onClick={() =>{}}> hola que ase</button>
-        <UserContainer />
-
-
-        {/* <div onClick={() => addItem({ variables: { name: 'dgdgd', description: '34444' } })}>
-          agregar
-        </div> */}
-        {/* <div style={style.main1}>
-      <Dot color="#FF0000" />
-      <Line />
-      <Dot color="#0000FF" />
-      <Line />
-      <Dot color="#228B22" /> 
-      <Line />
-      <Dot color="#808080" />
-    </div> */}
-        {/* <Phases info={Info.info} /> */}
-        {/* <Information /> */}
-        {/* <Social /> */}
-        {/* <Row style={{ height: 50, color: 'black' }}>
-          {users.map(u => (
-            <Row key={u.id} className="h-center v-center">
-              {u.name}
-            </Row>
-          ))} */}
-        {/* {selectedSidebar.name} */}
-        {/* </Row> */}
-        {/* <div className="history-main"> */}
-        {/* <History /> */}
-        {/* <History /> */}
-        {/* </div> */}
-
-        {/* </div> */}
+        {/* <TextInput /> */}
+        {/* <button id="create" onClick={() => { }}> hola que ase</button> */}
+        <UserContainer />    
       </section>
     </>
   )

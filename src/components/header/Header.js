@@ -97,7 +97,7 @@ const defaultUser = {
 const Profile = ({ user = defaultUser, onClick, open }) => (
   <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-start' }} onClick={() => onClick(!open)}>
     <div style={{ height: 36, width: 36 }}>
-      <img src={user.picture.data.url} style={{ height: '100%', width: '100%', borderRadius: 50, margin: 0, padding: 0 }} />
+      <img src={user && user.picture && user.picture.data && user.picture.data.url} style={{ height: '100%', width: '100%', borderRadius: 50, margin: 0, padding: 0 }} />
     </div>
     {open && (
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', marginLeft: 8 }}>

@@ -11,7 +11,9 @@ const GET_USERS = gql`
       _id
       name
       lastname
+      email
       description
+      updated_date
     }
   }
 `;
