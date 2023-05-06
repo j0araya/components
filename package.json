@@ -10,7 +10,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "apollo-boost": "^0.4.7",
-    "aws-sdk": "^2.612.0",
+    "aws-sdk": "^2.1373.0",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.3",
     "moment": "^2.24.0",
